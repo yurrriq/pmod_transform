@@ -1,6 +1,8 @@
 %% -*- erlang -*-
 {application, pmod_transform,
  [{description, "Parameterized Modules"},
-  {vsn, git},
+  {vsn, "1.0.0"},
+  {licenses, ["ERLANG PUBLIC LICENSE"]},
+  {links, [{"Github", "https://github.com/erlang/pmod_transform"}]},
   {modules, [pmod_pt]}
  ]}.
