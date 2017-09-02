@@ -8,11 +8,14 @@ MODULES = \
 	static_call.beam \
 	fun_in_pmod.beam
 
-EBIN = $(dir $(CURDIR))ebin
+EBIN ?= $(dir $(CURDIR))ebin
+
+.PHONY: all
+all: $(MODULES)
 
 .PHONY: tests
 tests: $(MODULES)
 	erl -pa $(EBIN) -noinput -eval 'eunit:test(test_pmod)' -run erlang halt
 
 %.beam: %.erl
-	erlc -pa $(EBIN) -Werror $<
+	erlc +debug_info -o $(EBIN) -pa $(EBIN) -Werror $<

@@ -3,8 +3,8 @@ all: src tests
 
 .PHONY: src
 src:
-	$(MAKE) -C src
+	rebar3 compile
 
-.PHONY: test
-tests: src
-	$(MAKE) -C tests
+.PHONY: tests
+tests:
+	rebar3 eunit

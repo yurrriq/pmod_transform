@@ -107,13 +107,13 @@ defining_instance_test() ->
     [{24,_,define_instance}] = fail_compile(defining_instance).
 
 fail_compile(M) ->
-    Filename = atom_to_list(M) ++ ".erl",
-    error = compile:file(M),
-    case compile:file(M, [return_errors]) of
-	{error,[{Filename,Es}],[]} ->
-	    Es
+    Filename = filename:join("tests", atom_to_list(M) ++ ".erl"),
+    error = compile:file(Filename),
+    case compile:file(Filename, [return_errors]) of
+        {error,[{Filename,Es}],[]} ->
+            Es
     end.
-    
+
 fun_test() ->
     M = fun_in_pmod:new(42),
     Add = M:add_fun(),
